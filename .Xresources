@@ -1,0 +1,17 @@
+/* *font: xft:mononoki-Regular\ Nerd\ Font\ Complete:size=10 */
+
+#include "/home/konig/.cache/wal/colors.Xresources"
+
+
+!rofi config
+rofi.show-icons: true
+rofi.modi: drun,combi,run,window,ssh,file_browser
+rofi.combi-modi: drun,window,file_browser
+
+rofi.fake-transparency:	true
+rofi.lines:		4
+rofi.padding: 2
+rofi.bw:		0
+rofi.opacity:		"60"
+rofi.hide-scrollbar:	true
+rofi.width: 45
