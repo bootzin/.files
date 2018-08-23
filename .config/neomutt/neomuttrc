@@ -1,0 +1,255 @@
+#vim: filetype=neomuttrc
+#
+#
+#
+
+# Hey, I know you!
+source ~/.config/neomutt/account
+
+# I like colours!
+source ~/.config/neomutt/muttcol
+
+
+
+# Send Mails Command
+set sendmail = "/usr/bin/msmtp -a Gmail"
+set smtp_authenticators = 'gssapi:login'
+#connection encryption
+set ssl_force_tls
+
+# Fetch mails format, necessary for offline access
+set mbox_type=Maildir
+
+# Folder's Structure for offline
+set folder="~/Mail/Gmail"
+## Save and sync Sent messages
+set record="~/Mail/Gmail/Sent Mail"
+set trash=+Trash
+set spoolfile=+INBOX
+set postponed=+Drafts
+
+# Local dirs
+set mailcap_path = "~/.config/neomutt/mailcap/mailcap" # View attachments
+set header_cache="~/.config/neomutt/cache/head"
+set tmpdir = "~/.config/neomutt/temp" # temp dir
+set message_cachedir="~/.config/neomutt/cache/body" # store bodies
+set certificate_file="~/.config/neomutt/certificates" # certificates
+
+# General
+set move=no # don't ask to move after reading
+set quit
+set sleep_time = 0
+set timeout = "10"
+set mail_check = "10"
+set delete
+set beep_new
+# strip headers and eval mimes when piping
+set pipe_decode
+# strip headers and eval mimes before searching
+set thorough_search
+# wrap at word end
+set smart_wrap
+unset user_agent
+unset use_domain
+
+
+
+# Status bar
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)?%?F? (%F flagged)? ]───%>─%?p?( %p postponed )? (%l)───"
+
+# Sidebar
+set sidebar_visible = yes
+set sidebar_width = 20
+set sidebar_short_path
+set sidebar_next_new_wrap #?
+set mail_check_stats
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Co sidebar-open
+bind index,pager <F3> sidebar-page-up
+bind index,pager <F4> sidebar-page-down
+bind index,pager \Cp sidebar-prev-new
+bind index,pager \Cn sidebar-next-new
+bind index,pager B sidebar-toggle-visible
+# set sidebar_divider_char = "▎"
+# set sidebar_folderindent = no
+
+
+# IMAPS and INBOX
+mailboxes =INBOX \
+=Starred \
+=Sent \
+=Drafts \
+=Spam \
+=Trash
+# =Important \
+# =Embraer \
+# =archive \
+# =github
+
+########################################3
+# NOTMUCH
+    # macro index <F8> \
+          # "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch.pl --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+          # "notmuch: search mail"
+    # macro index <F9> \
+          # "<enter-command>unset wait_key<enter><pipe-message>~/.mutt/mutt-notmuch.pl thread<enter><change-folder-readonly>~/.cache/mutt_results<enter><enter-command>set wait_key<enter>" \
+          # "notmuch: reconstruct thread"
+    # macro index <F6> \
+          # "<enter-command>unset wait_key<enter><pipe-message>~/.mutt/mutt-notmuch.pl tag -inbox<enter>" \
+          # "notmuch: remove message from inbox"
+# Notmuch searching
+# macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+# macro index A "<limit>all\n" "show all messages (undo limit)"
+#
+#########################################3
+
+# Editing
+# use vim as editor; start on line 9; enable spelling
+set editor="vim \"+set spell spelllang=pt_br,en_us\" +/^$/ +9"
+set edit_headers
+#set attributon="%n wrote:"
+set charset="utf-8"
+# set signature="~/.config/neomutt/bootSig"      # bootzin signature
+# set signature="~/.config/neomutt/sig" 		 # signature
+#set signature="fortune -n 200 -so calvin|"  # signature.alt
+
+
+
+
+# Readability
+set date_format="%d/%m %H:%M"
+auto_view text/html
+auto_view application/pdf
+set tilde
+unset markers
+unset mark_old
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+# Index and Sorting
+set sort = reverse-threads
+set strict_threads
+# set sort = reverse-date
+set sort_aux =last-date-received
+unset collapse_unread
+set uncollapse_jump
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+set index_format = "%2C %Z %?X?A& ? %D %-18.18F %s (%-4.4c)"
+
+
+
+# Pager settings
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set status_on_top
+# regex to detect quoted
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+
+
+## --- Header settings ---
+set use_from  							# generate 'from' header
+ignore *                                # ignore all headers
+unignore from: to: cc: date: subject:   # show only these
+unhdr_order *                           # order things
+hdr_order from: to: cc: date: subject:  # and in this order
+##my_hdr Bcc: $my_address                 # helps with conversations
+charset-hook ^iso-8859-1$ windows-1252  # use windows encoding for
+                                        # charset ISO-8859-1
+
+# Composing settings
+set sig_dashes 			 # add -- \n before signature
+set fast_reply           # skip to compose when replying
+set fcc_attach           # save attachments with the body
+unset mime_forward       # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set forward_quote                    # include message in forwards
+set attribution = "On %d, %n wrote:" # format of quoting header; before message included in a reply
+set reverse_name                     # reply as whomever it was to
+set include 						 # include message in replies
+
+
+#contacts with 'abook'
+set query_command="abook --mutt-query '%s'"
+macro index,pager a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to abook"
+bind editor <Tab> complete-query # tab completion for addresses
+
+# Aliases
+set alias_file="~/home/konig/.config/neomutt/aliases
+set reverse_alias
+set sort_alias="alias"
+#source $alias_file
+
+# General remappings
+bind index,pager i noop
+bind index,pager g noop
+bind index \Cf noop
+bind editor <space> noop
+bind index G last-entry
+bind index gg first-entry
+bind index d half-down
+bind index u half-up
+bind index D delete-message
+bind index U undelete-message
+bind index \CF search
+bind index,pager R group-reply
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind compose p postpone-message
+bind index p recall-message
+bind generic x tag-entry
+bind index x tag-thread
+bind pager x tag-message
+bind index Q exit
+bind index tr read-thread
+bind index <return> collapse-thread
+
+
+macro index,pager \Cu |urlview\n
+macro index,pager S '<sync-mailbox>
+# macro index,pager A "<save-message>=$mbox<enter>" "Archive Message"
+# require trash patch
+# macro index,pager y "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+# macro index,pager td "<enter-command>set trash=\""\n <delete-message>" "Gmail delete message"
+
+
+
+#View attachments
+bind attach <return> view-mailcap
+
+#Ctrl-R to mark all as read
+# macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+#sync email
+macro index O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+
+
+#saner copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# vim: set ft=muttrc tw=72 colorcolumn=73:

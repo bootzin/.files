@@ -42,7 +42,8 @@ alias Txa="cp ~/Documents/LaTeX/article.tex ./"
 # alias Txh="cp ~/Documents/LaTeX/handout.tex"
 alias TC='texclear'
 
-
+#Dotfiles management
+alias config='/usr/bin/git --git-dir=$HOME/.files --work-tree=$HOME'
 
 
 

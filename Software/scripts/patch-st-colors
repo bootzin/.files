@@ -1,0 +1,5 @@
+#!/bin/bash
+patch -d ~/.cache/wal colors-wal-st.h -i st-color.patch -o colors-wal-st.h.new
+mv ~/.cache/wal/colors-wal-st.h.new ~/.cache/wal/colors-wal-st.h
+cd ~/Software/st
+sudo make clean install
