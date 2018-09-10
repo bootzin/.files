@@ -1,3 +1,36 @@
 [submodule ".vim/bundle/goyo.vim"]
 	path = .vim/bundle/goyo.vim
 	url = https://github.com/junegunn/goyo.vim
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = https://github.com/ervandew/supertab
+[submodule ".vim/bundle/i3-vim-syntax"]
+	path = .vim/bundle/i3-vim-syntax
+	url = https://github.com/PotatoesMaster/i3-vim-syntax
+[submodule ".vim/bundle/limelight.vim"]
+	path = .vim/bundle/limelight.vim
+	url = https://github.com/junegunn/limelight.vim
+[submodule ".vim/bundle/smv_vim"]
+	path = .vim/bundle/smv_vim
+	url = https://github.com/shinka-cb/smv_vim
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule ".vim/bundle/vim-indent-guides"]
+	path = .vim/bundle/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides
+[submodule ".vim/bundle/vim-live-latex-preview"]
+	path = .vim/bundle/vim-live-latex-preview
+	url = https://github.com/ying17zi/vim-live-latex-preview
+[submodule ".vim/bundle/vim-multiple-cursors"]
+	path = .vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule ".vim/bundle/vim-zenroom2"]
+	path = .vim/bundle/vim-zenroom2
+	url = https://github.com/amix/vim-zenroom2
+[submodule ".vim/bundle/wal.vim"]
+	path = .vim/bundle/wal.vim
+	url = https://github.com/dylanaraps/wal.vim
