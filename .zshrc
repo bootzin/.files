@@ -67,7 +67,7 @@ export PATH=$PATH:$HOME/.bin:$HOME/.local/bin
 
 # auto-ls after changing directory
 cd () {
-   builtin cd $@ && ls -A
+   builtin cd $@ && ls -AhCF --color=auto --group-directories-first
 }
 
 

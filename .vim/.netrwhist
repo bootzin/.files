@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/etc/cron.hourly'
-let g:netrw_dirhist_2='/etc'
-let g:netrw_dirhist_3='/etc/cron.monthly'
-let g:netrw_dirhist_4='/etc'
-let g:netrw_dirhist_5='/etc/cron.weekly'
-let g:netrw_dirhist_6='/etc'
-let g:netrw_dirhist_7='/home/konig/.vim/bundle/vim-live-latex-preview'
-let g:netrw_dirhist_8='/home/konig/.vim/bundle/vim-live-latex-preview/ftplugin'
-let g:netrw_dirhist_9='/home/konig/.vim/bundle/vim-live-latex-preview/ftplugin/tex'
+let g:netrw_dirhist_cnt =0
